@@ -54,6 +54,10 @@ bindsym $mod+Return exec i3-sensible-terminal
 # start a browser 
 bindsym $mod+b exec helium 
 
+# Flameshot
+exec --no-startup-id flameshot
+bindsym Print exec flameshot gui
+
 # kill focused window
 bindsym $mod+Shift+q kill
 

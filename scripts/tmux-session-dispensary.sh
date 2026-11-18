@@ -8,8 +8,10 @@ DIRS=(
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    result=$(fd . "${DIRS[@]}" --type=directory --max-depth=1 --full-path --base-directory "$HOME" \
-        | sed "s|^$HOME/||" \
+    result=$({
+	    fd . "${DIRS[@]}" --type=directory --max-depth=1 --full-path --base-directory "$HOME" 
+	    printf '%s\n' "$HOME/dotfiles"
+	} | sed "s|^$HOME/||" \
         | sk --print-query --margin 10% --color="bw")
 
     query=$(echo "$result" | head -n1)
